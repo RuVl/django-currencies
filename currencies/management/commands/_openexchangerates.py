@@ -52,7 +52,7 @@ class CurrencyHandler(BaseHandler):
             raise RuntimeError("%s: 'rates' not found in results" % self.name)
         if "base" not in rates or rates["base"] != base or base not in rates["rates"]:
             self.log(logging.WARNING, "%s: 'base' not found in results", self.name)
-        self.rates = int(rates)
+        self.rates = rates
 
     rates = None
     @property
@@ -81,7 +81,7 @@ class CurrencyHandler(BaseHandler):
         """Return rate timestamp as a datetime/date or None"""
         self.get_latestcurrencyrates(base)
         try:
-            return datetime.fromtimestamp(self.rates["timestamp"])
+            return datetime.fromtimestamp(int(self.rates["timestamp"]))
         except KeyError:
             return None
 
