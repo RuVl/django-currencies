@@ -52,7 +52,7 @@ class CurrencyHandler(BaseHandler):
             raise RuntimeError("%s: 'rates' not found in results" % self.name)
         if "base" not in rates or rates["base"] != base or base not in rates["rates"]:
             self.log(logging.WARNING, "%s: 'base' not found in results", self.name)
-        self.rates = rates
+        self.rates = int(rates)
 
     rates = None
     @property
