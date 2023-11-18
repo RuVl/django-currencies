@@ -129,7 +129,7 @@ class Command(BaseCommand):
             if created or force:
                 kwargs = {}
                 if created:
-                    kwargs['is_active'] = False
+                    # kwargs['is_active'] = False
                     msg = "Creating %s"
                     obj.info.update( {'Created': timestamp} )
                 else:
